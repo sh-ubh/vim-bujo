@@ -9,13 +9,13 @@
 "
 " search() returns 0 if it the pattern was not found
 function <SID>SearchCheck()
-  return (search('\[\]', 'nc', line('.')) || search('\[\]', 'nbc', line('.')))
+  return (search('\[ \]', 'nc', line('.')) || search('\[ \]', 'nbc', line('.')))
 endfunction
 
 " Edit markdown lists
 " Add and remove bullets with ease
 " If we are already checked then we uncheck
-nnoremap <expr> <silent> <buffer> <Plug>BujoChecknormal <SID>SearchCheck() ? ':.s/\[\]/\[x\]<Enter>' : ':.s/\[x\]/\[\]<Enter>' 
-nnoremap <silent> <buffer> <Plug>BujoAddnormal i-[] 
-inoremap <silent> <buffer> <Plug>BujoAddinsert -[] 
-inoremap <expr> <silent> <buffer> <Plug>BujoCheckinsert <SID>SearchCheck() ? '<esc>:.s/\[\]/\[x\]<Enter>' : '<esc>:.s/\[x\]/\[\]<Enter>' 
+nnoremap <expr> <silent> <buffer> <Plug>BujoChecknormal <SID>SearchCheck() ? ':.s/\[ \]/\[x\]<Enter>' : ':.s/\[x\]/\[ \]<Enter>'
+nnoremap <silent> <buffer> <Plug>BujoAddnormal i- [ ] 
+inoremap <silent> <buffer> <Plug>BujoAddinsert - [ ] 
+inoremap <expr> <silent> <buffer> <Plug>BujoCheckinsert <SID>SearchCheck() ? '<esc>:.s/\[ \]/\[x\]<Enter>' : '<esc>:.s/\[x\]/\[ \]<Enter>'
